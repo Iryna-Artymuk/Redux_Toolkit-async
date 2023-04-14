@@ -2,12 +2,12 @@ import { Button } from 'components/Button/Button';
 import css from './StatusFilter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { allFilters } from '../../../redux/constants';
-import { getStatusFilter } from '../../../redux/selectors';
+import { selectStatusFilter } from '../../../redux/selectors';
 import { sortAtoZ } from '../../../redux/taskSliceWithThunk';
 import { setStatusFilter } from '../../../redux/filtersSlice';
 // console.log(allFilters);
 export const StatusFilter = () => {
-  const filter = useSelector(getStatusFilter);
+  const filter = useSelector(selectStatusFilter);
   const dispatch = useDispatch();
 
   // Викликаємо генератор екшену та передаємо значення фільтра

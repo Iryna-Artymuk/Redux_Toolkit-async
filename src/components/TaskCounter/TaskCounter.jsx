@@ -1,7 +1,7 @@
 import css from './TaskCounter.module.css';
 // Імпортуємо хук
 import { useSelector } from 'react-redux';
-import { getTasks } from '../../redux/selectors';
+import { selectTasks } from '../../redux/selectors';
 export const getStatusFilter = state => state.filters.status;
 export const TaskCounter = () => {
   // Один і той же селектор може використовуватися в декількох місцях програми,
@@ -9,7 +9,7 @@ export const TaskCounter = () => {
   //Щоб уникнути цього та ще більше структурувати код, всі функції-селектори оголошуються в окремому файлі,
   //наприклад, в src/redux/selectors.js,
   //після чого імпортуються до компонентів.
-  const tasks = useSelector(getTasks);
+  const tasks = useSelector(selectTasks);
   const tasksCount = tasks.reduce(
     (ititialcount, task) => {
       if (task.completed) {

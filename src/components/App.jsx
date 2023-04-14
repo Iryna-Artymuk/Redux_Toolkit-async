@@ -8,13 +8,13 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { getTodos } from 'redux/operations';
 import { fetchToDo } from 'redux/operationsWithThunk';
 
-import { getTasks, getIsLoading, getError } from 'redux/selectors';
+import { selectTasks, selectIsLoading, selectError } from 'redux/selectors';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const tasks = useSelector(getTasks);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const tasks = useSelector(selectTasks);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   // при загрузкі сорінки нам треба зробити запит на  бекенл і отримати список завдань щоб рендирити сторінку
   // методом dispatch віжправляєм фнекцію яка спочатку
 
