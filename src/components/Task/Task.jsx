@@ -2,7 +2,8 @@ import { MdClose } from 'react-icons/md';
 import css from './Task.module.css';
 import { useDispatch } from 'react-redux';
 // Імпортуємо генератор екшену
-import { deleteTask, toggleCompleted } from '../../redux/tasksSlice';
+// import { deleteTask, toggleCompleted } from '../../redux/tasksSlice';
+import { deleteTask, toggleCompleted } from '../../redux/operationsWithThunk';
 export const Task = ({ task }) => {
   // Отримуємо посилання на функцію відправки екшенів
   const dispatch = useDispatch();
@@ -10,13 +11,12 @@ export const Task = ({ task }) => {
   // Відправляємо результат - екшен видалення завдання
 
   const handleDelete = () => {
-    console.log('delete task');
     dispatch(deleteTask(task.id));
+    // console.log(task.id);
   };
-  const handleToggle = () => {
-    console.log('togggle');
-    dispatch(toggleCompleted(task.id));
-  };
+
+  const handleToggle = () => dispatch(toggleCompleted(task));
+
   return (
     <div className={css.wrapper}>
       <input

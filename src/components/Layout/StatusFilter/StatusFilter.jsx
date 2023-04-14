@@ -1,10 +1,10 @@
 import { Button } from 'components/Button/Button';
 import css from './StatusFilter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { allFilters } from '../../redux/constants';
-import { getStatusFilter } from '../../redux/selectors';
-import { sortAtoZ, sortZtoA } from '../../redux/tasksSlice';
-import { setStatusFilter } from '../../redux/filtersSlice';
+import { allFilters } from '../../../redux/constants';
+import { getStatusFilter } from '../../../redux/selectors';
+import { sortAtoZ } from '../../../redux/taskSliceWithThunk';
+import { setStatusFilter } from '../../../redux/filtersSlice';
 // console.log(allFilters);
 export const StatusFilter = () => {
   const filter = useSelector(getStatusFilter);
@@ -13,8 +13,11 @@ export const StatusFilter = () => {
   // Викликаємо генератор екшену та передаємо значення фільтра
   // Відправляємо результат - екшен зміни фільтра
   const handleFilterChange = filter => dispatch(setStatusFilter(filter));
-  const handaleAtoZSort = () => dispatch(sortAtoZ());
-  const handaleZtoASort = () => dispatch(sortZtoA());
+  const handaleAtoZSort = () => {
+    console.log('sort');
+    dispatch(sortAtoZ());
+  };
+  // const handaleZtoASort = () => dispatch(sortZtoA());
 
   return (
     // кнопка вибрана якщо значення фільтру в store співпадає з одним з можливих
@@ -42,7 +45,7 @@ export const StatusFilter = () => {
         Completed
       </Button>
       <Button onClick={handaleAtoZSort}>Sort A to Z</Button>
-      <Button onClick={handaleZtoASort}>Sort Z to A</Button>
+      {/* <Button onClick={handaleZtoASort}>Sort Z to A</Button> */}
     </div>
   );
 };

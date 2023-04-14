@@ -1,8 +1,7 @@
-import { StatusFilter } from 'components/StatusFilter/StatusFilter';
+import { StatusFilter } from 'components/Layout/StatusFilter/StatusFilter';
 import { TaskCounter } from 'components/TaskCounter/TaskCounter';
 import css from './App.module.css';
-import { getTodos } from '../../redux/operations';
-getTodos();
+
 export const HeaderBar = () => {
   return (
     <header className={css.wrapper}>
